@@ -6,13 +6,11 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/10 16:34:59 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/11 15:14:13 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <fcntl.h>
-#include <unistd.h>
+#include "libfil.h"
 
 char	*ft_get_tetro(char *arg)
 {
