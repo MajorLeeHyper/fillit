@@ -6,33 +6,50 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/16 12:20:53 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/16 17:34:42 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfil.h"
 
 /*
-** Will return 0 if tetromino is valid.
+** Will return 0 if tetromino is valid. Does not check for individual tetromino
 */
+/*
+t_block	*ft_get_block(char *tet)
+{
+	t_block *start;
+	int	x;
+	int	y;
 
-int		ft_check_valid(char tet)
+	start = (t_block*)malloc(sizeof(t_block));
+	if (start == 0)
+		return (0);
+	x = 0;
+	y = 0;
+}
+*/
+int		ft_check_valid(char *tet)
 {
 	int	n;
+	int	count;
 
 	if (tet[4] != '\n' || tet[9] != '\n' || tet[14] != '\n' || tet[19] != '\n')
 		return (1);
-	if (tet[20] != '\n')
+	if (tet[20] != '\n' && tet[20] != 0)
 		return (2);
-	if (tet[20] != 0)
-		return (3);
 	n = 0;
+	count = 0;
 	while (n != 19)
 	{
-		if (tet[n] != '.' || tet[n] != '#' || tet[n] != '\n')
-			return (4);
+		if (tet[n] != '.' && tet[n] != '#' && tet[n] != '\n')
+			return (3);
+		if (tet[n] == '#')
+			count++;
 		n++;
 	}
+	if (count != 4)
+		return (4);
 	return (0);
 }
 
@@ -47,6 +64,8 @@ char	*ft_get_tetro(char *arg)
 	fd = open(arg, O_RDONLY);
 	while (read(fd, buff, 21))
 	{
+		if (ft_check_valid(buff) == 0)
+			ft_putstr("valid!\n");
 		ft_putstr(buff);
 	}
 	return (buff);
