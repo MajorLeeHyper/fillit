@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 22:01:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/17 22:47:51 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/18 15:28:56 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,39 +19,28 @@ t_dance	*ft_newdance(char *tet)
 	res = (t_dance*)malloc(sizeof(t_dance));
 	if (!res)
 		return (NULL);
-	ft_putstr("just created a new link in newdance\n");
+	ft_putstr("newdance malloc\n");
 	res->tet = ft_strdup(tet);
+	ft_putstr("strdup\n");
+	res->right = res;
+	ft_putstr("res->right = res\n");
+	res->left = res;
+	ft_putstr("res->left = res\n");
 	return (res);
 }
 
 void	ft_newright(t_dance *head, char *tet)
 {
-	while (head->right != NULL)
-		head = head->right;
 	head->right = ft_newdance(tet);
+	head->right->left = head;
 	ft_putstr("just called for a newdance in newright\n");
 }
 
 void	ft_newleft(t_dance *head, char *tet)
 {
-	while (head->left != NULL)
-		head = head->left;
 	head->left = ft_newdance(tet);
+	head->left->right = head;
 	ft_putstr("just called for a newdance in newleft\n");
-}
-
-void	ft_make_circle(t_dance *head)
-{
-	t_dance *start;
-
-	start = head;
-	while (head->right != NULL)
-		head = head->right;
-	if (head->right == NULL)
-	{
-		head->right = start;
-		start->left = head;
-	}
 }
 
 void	ft_printdance(t_dance *lst)
