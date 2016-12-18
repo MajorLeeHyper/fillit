@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/17 20:26:17 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/17 22:37:47 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_block	*ft_get_block(char *tet)
 	}
 }
 */
+
 static int		ft_check_valid(char *tet)
 {
 	int	n;
@@ -73,16 +74,21 @@ char	*ft_get_tetro(char *arg)
 {
 	int		fd;
 	char	*buff;
+//	t_dance *lst;
 
 	buff = ft_strnew(22);
 	if (buff == 0)
 		return (0);
 	fd = open(arg, O_RDONLY);
+	//read(fd, buff, 21);
+	//lst = ft_newdance(buff);
 	while (read(fd, buff, 21))
 	{
 		if (ft_check_valid(buff) == 0)
 			ft_putstr("valid!\n");
 		ft_putstr(buff);
+		//ft_newright(lst, buff);
 	}
+	//ft_make_circle(lst);
 	return (buff);
 }
