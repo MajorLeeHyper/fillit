@@ -15,12 +15,11 @@ FILENAMES	+= ft_lstiter.c ft_lstmap.c
 FILENAMES	+= ft_isupper.c ft_islower.c ft_intlen.c ft_iswhite.c ft_strrev.c
 HEADER		= .
 FLAGS		= -Wall -Wextra -Werror
-TEST		= runtest
 
 SRC			= $($(FILENAMES))
 OBJ			= $(addprefix build/, $(FILENAMES:.c=.o))
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
@@ -33,16 +32,9 @@ build/%.o: %.c | build
 build:
 	mkdir build
 
-test: $(NAME)
-	gcc $(FLAGS) test.c -I $(HEADER) $(NAME) -o $(TEST)
-
-debug: $(NAME)
-	gcc -g $(FLAGS) test.c -I $(HEADER) $(NAME) -o $(TEST)
 
 clean:
 	rm -rf build
-	rm -f runme
-	rm -f $(TEST)
 
 fclean: clean
 	rm -f $(NAME)
