@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/17 20:03:38 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/17 20:26:17 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ t_block	*ft_get_block(char *tet)
 */
 static int		ft_check_valid(char *tet)
 {
-//	int	n;
-//	int	count;
+	int	n;
+	int	count;
 
-/*	if (tet[4] != '\n' || tet[9] != '\n' || tet[14] != '\n' || tet[19] != '\n')
+	if (tet[4] != '\n' || tet[9] != '\n' || tet[14] != '\n' || tet[19] != '\n')
 		return (1);
 	if (tet[20] != '\n' && tet[20] != 0)
 		return (2);
@@ -64,7 +64,7 @@ static int		ft_check_valid(char *tet)
 	}
 	if (count != 4)
 		return (4);
-*/	if (ft_connection(ft_strsplit(tet, '\n')) != 1)
+	if (ft_connection(ft_strsplit(tet, '\n')) != 1)
 		return (5);
 	return (0);
 }
