@@ -6,13 +6,13 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 13:42:07 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/16 19:15:52 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/17 19:21:34 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "headername.h"
+#include "fillit.h"
 
-int		test1(char **thing)
+int		ft_connection(char **tet)
 {
 	int		i;
 	int		j;
@@ -23,13 +23,13 @@ int		test1(char **thing)
 	while (i < 4)
 	{
 		j = 0;
-		while (thing[i][j] != '\0')
+		while (tet[i][j] != '\0')
 		{
-			if (thing[i][j] == '#' && i > 0 && i < 3)
-				if (thing[i - 1][j] == '#' || thing[i + 1][j] == '#')
+			if (tet[i][j] == '#' && i > 0 && i < 3)
+				if (tet[i - 1][j] == '#' || tet[i + 1][j] == '#')
 					count++;
-			if (thing[i][j] == '#' && j > 0 && j < 3)
-				if (thing[i][j - 1] == '#' || thing[i][j + 1] == '#')
+			if (tet[i][j] == '#' && j > 0 && j < 3)
+				if (tet[i][j - 1] == '#' || tet[i][j + 1] == '#')
 					count++;
 			j++;
 		}
