@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:37:50 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/16 19:18:12 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/17 19:32:55 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "libft.h"
 
 char			*ft_get_tetro(char *arg);
+int				ft_connection(char **tet);
 
 typedef struct	s_block
 {
