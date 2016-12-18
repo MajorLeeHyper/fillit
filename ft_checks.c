@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 13:42:07 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/17 20:00:15 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/17 20:22:47 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,22 @@ int		ft_connection(char **tet)
 		{
 			if (tet[i][j] == '#')
 			{
-				if (tet[i - 1][j] == '#' && i > 0)
+				if (i != 0 && tet[i - 1][j] == '#')
 				{
 					count++;
 					ft_putstr("column count++\n");
 				}
-				if (tet[i + 1][j] == '#' && i < 3)
+				if (i != 3 && tet[i + 1][j] == '#')
 				{
 					ft_putstr("column count++\n");
 					count++;
 				}
-				if (tet[i][j - 1] == '#' && j > 0)
+				if (j != 0 && tet[i][j - 1] == '#')
 				{
 					count++;
 					ft_putstr("row count++\n");
 				}
-				if (tet[i][j + 1] == '#'&& j < 3)
+				if (j != 3 && tet[i][j + 1] == '#')
 				{
 					ft_putstr("row count++\n");
 					count++;
@@ -52,7 +52,7 @@ int		ft_connection(char **tet)
 		}
 		i++;
 	}
-	if (count == 6 || count == 8)
+	if (count >= 6)
 		return (1);
 	return (0);
 }
