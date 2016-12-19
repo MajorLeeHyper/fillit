@@ -6,52 +6,83 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 22:01:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 15:28:56 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/18 17:23:25 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfil.h"
 
-t_dance	*ft_newdance(char *tet)
+t_dance	*ft_newdance(char *tet, char let)
 {
 	t_dance *res;
 
 	res = (t_dance*)malloc(sizeof(t_dance));
 	if (!res)
 		return (NULL);
-	ft_putstr("newdance malloc\n");
 	res->tet = ft_strdup(tet);
-	ft_putstr("strdup\n");
-	res->right = res;
-	ft_putstr("res->right = res\n");
-	res->left = res;
-	ft_putstr("res->left = res\n");
+	res->right = NULL;
+	res->left = NULL;
+	res->label = let;
 	return (res);
 }
 
-void	ft_newright(t_dance *head, char *tet)
+void	ft_newright(t_dance **start, char *tet, char let)
 {
-	head->right = ft_newdance(tet);
+	t_dance *head;
+
+	head = *start;
+	head->right = ft_newdance(tet, let);
 	head->right->left = head;
-	ft_putstr("just called for a newdance in newright\n");
 }
 
-void	ft_newleft(t_dance *head, char *tet)
+void	ft_newleft(t_dance **start, char *tet, char let)
 {
-	head->left = ft_newdance(tet);
+	t_dance *head;
+
+	head = *start;
+	head->left = ft_newdance(tet, let);
 	head->left->right = head;
-	ft_putstr("just called for a newdance in newleft\n");
 }
 
 void	ft_printdance(t_dance *lst)
 {
-	t_dance *start;
-
-	start = lst;
-	while (lst->right != start)
+	while (lst->right != NULL)
 	{
+		ft_putchar(lst->label);
 		ft_putstr(lst->tet);
 		lst = lst->right;
 	}
+		ft_putchar(lst->label);
 	ft_putstr(lst->tet);
+}
+
+void	ft_makedance(t_dance **start, t_dance **end)
+{
+	t_dance *s;
+	t_dance *e;
+
+	s = *start;
+	e = *end;
+	e->right = s;
+	s->left = e;
+}
+
+int		ft_countdance(t_dance *start)
+{
+	t_dance *cpy;
+	int		count;
+
+	cpy = start;
+	count = 0;
+	if (start)
+	{
+		count++;
+		start = start->left;
+	}
+	while (start != cpy)
+	{
+		count++;
+		start = start->left;
+	}
+	return (count);
 }

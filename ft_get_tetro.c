@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 15:36:42 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/18 17:23:51 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,28 @@ char	*ft_get_tetro(char *arg)
 {
 	int		fd;
 	char	*buff;
-//	t_dance *lst;
+	t_dance *lst;
+	t_dance *start;
+	char	let;
 
 	buff = ft_strnew(22);
 	if (buff == 0)
 		return (0);
 	fd = open(arg, O_RDONLY);
-//	read(fd, buff, 21);
-//	lst = ft_newdance(buff);
+	read(fd, buff, 21);
+	let = 'A';
+	lst = ft_newdance(buff, let);
+	start = lst;
 	while (read(fd, buff, 21))
 	{
-		if (ft_check_valid(buff) == 0)
-			ft_putstr("valid!\n");
-		ft_putstr(buff);
+		let++;
+		if (ft_check_valid(buff) != 0)
+			return (0);
+		ft_newright(&lst, buff, let);
 		ft_bzero(buff, 22);
-//		ft_newright(lst, buff);
+		lst = lst->right;
 	}
+	ft_makedance(&start, &lst);
+	printf("COUNT: %i\n", ft_countdance(start));
 	return (buff);
 }
