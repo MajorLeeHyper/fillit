@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 18:58:12 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/18 18:58:15 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/18 20:47:00 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ static void	ft_increment(size_t *i, size_t *j)
 	*j = *j + 1;
 }
 
-static char	*ft_trim(char *condenced)
+static char	*ft_trim(char *just_tet)
 {
 	size_t	j;
 
-	j = ft_strlen(condenced) - 1;
-	while (condenced[j] == '.' || condenced[j] == '\n')
+	j = ft_strlen(just_tet) - 1;
+	while (just_tet[j] == '.' || just_tet[j] == '\n')
 	{
-		condenced[j] = '\0';
+		just_tet[j] = '\0';
 		j--;
 	}
-	return (condenced);
+	return (just_tet);
 }
 
 static char	*ft_simplify_tet(char *tet)
