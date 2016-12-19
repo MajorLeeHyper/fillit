@@ -6,44 +6,11 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 17:58:29 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/18 19:00:27 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfil.h"
-#include <stdio.h> //TODO remove
-
-/*
-** Will return 0 if tetromino is valid. Does not check for individual tetromino
-*/
-
-/*
-t_block	*ft_get_block(char *tet)
-{
-	t_block *start;
-	int	x;
-	int	y;
-
-	start = (t_block*)malloc(sizeof(t_block));
-	if (start == 0)
-		return (0);
-	x = 0;
-	y = 0;
-	while (*tet)
-	{
-		if (*tet == '#')
-		{
-			start->coord
-		}
-		if (*tet == '\n')
-		{
-			x = 0;
-			y++;
-		}
-		tet++;
-	}
-}
-*/
 
 static int		ft_check_valid(char *tet)
 {
@@ -71,7 +38,7 @@ static int		ft_check_valid(char *tet)
 	return (0);
 }
 
-char	*ft_get_tetro(char *arg)
+char			*ft_get_tetro(char *arg)
 {
 	int		fd;
 	char	*buff;
@@ -85,19 +52,17 @@ char	*ft_get_tetro(char *arg)
 	fd = open(arg, O_RDONLY);
 	read(fd, buff, 21);
 	let = 'A';
-	lst = ft_newdance(buff, let);
+	lst = ft_newdance(ft_tet_type(buff), let);
 	start = lst;
 	while (read(fd, buff, 21))
 	{
 		let++;
 		if (ft_check_valid(buff) != 0)
 			return (0);
-		ft_newright(&lst, buff, let);
+		ft_newright(&lst, ft_tet_type(buff), let);
 		ft_bzero(buff, 22);
 		lst = lst->right;
 	}
 	ft_makedance(&start, &lst);
-	ft_printdance(start);
-	printf("COUNT: %i\n", ft_countdance(start));
 	return (buff);
 }

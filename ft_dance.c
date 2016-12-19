@@ -6,27 +6,27 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 22:01:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 18:01:29 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/18 19:01:45 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfil.h"
 
-t_dance	*ft_newdance(char *tet, char let)
+t_dance	*ft_newdance(int tet, char let)
 {
 	t_dance *res;
 
 	res = (t_dance*)malloc(sizeof(t_dance));
 	if (!res)
 		return (NULL);
-	res->tet = ft_strdup(tet);
+	res->tet = tet;
 	res->right = NULL;
 	res->left = NULL;
 	res->label = let;
 	return (res);
 }
 
-void	ft_newright(t_dance **start, char *tet, char let)
+void	ft_newright(t_dance **start, int tet, char let)
 {
 	t_dance *head;
 
@@ -35,14 +35,16 @@ void	ft_newright(t_dance **start, char *tet, char let)
 	head->right->left = head;
 }
 
-void	ft_newleft(t_dance **start, char *tet, char let)
-{
-	t_dance *head;
-
-	head = *start;
-	head->left = ft_newdance(tet, let);
-	head->left->right = head;
-}
+/*
+**	void	ft_newleft(t_dance **start, int tet, char let)
+**	{
+**		t_dance *head;
+**
+**		head = *start;
+**		head->left = ft_newdance(tet, let);
+**		head->left->right = head;
+**	}
+*/
 
 void	ft_printdance(t_dance *start)
 {
@@ -52,15 +54,15 @@ void	ft_printdance(t_dance *start)
 	if (start)
 	{
 		ft_putchar(start->label);
+		ft_putnbr(start->tet);
 		ft_putchar('\n');
-		ft_putstr(start->tet);
 		start = start->right;
 	}
 	while (start != cpy)
 	{
 		ft_putchar(start->label);
+		ft_putnbr(start->tet);
 		ft_putchar('\n');
-		ft_putstr(start->tet);
 		start = start->right;
 	}
 }
