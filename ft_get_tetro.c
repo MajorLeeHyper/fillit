@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 17:23:51 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/18 17:58:29 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ char	*ft_get_tetro(char *arg)
 		lst = lst->right;
 	}
 	ft_makedance(&start, &lst);
+	ft_printdance(start);
 	printf("COUNT: %i\n", ft_countdance(start));
 	return (buff);
 }

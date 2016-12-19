@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/17 22:01:42 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 17:23:25 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/18 18:01:29 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,25 @@ void	ft_newleft(t_dance **start, char *tet, char let)
 	head->left->right = head;
 }
 
-void	ft_printdance(t_dance *lst)
+void	ft_printdance(t_dance *start)
 {
-	while (lst->right != NULL)
+	t_dance *cpy;
+
+	cpy = start;
+	if (start)
 	{
-		ft_putchar(lst->label);
-		ft_putstr(lst->tet);
-		lst = lst->right;
+		ft_putchar(start->label);
+		ft_putchar('\n');
+		ft_putstr(start->tet);
+		start = start->right;
 	}
-		ft_putchar(lst->label);
-	ft_putstr(lst->tet);
+	while (start != cpy)
+	{
+		ft_putchar(start->label);
+		ft_putchar('\n');
+		ft_putstr(start->tet);
+		start = start->right;
+	}
 }
 
 void	ft_makedance(t_dance **start, t_dance **end)
