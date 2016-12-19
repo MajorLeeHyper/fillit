@@ -6,13 +6,13 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/14 13:42:07 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/18 17:39:23 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/18 18:43:58 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfil.h"
 
-int		ft_connection(char **tet)
+int			ft_connection(char **tet)
 {
 	int		i;
 	int		j;
@@ -41,61 +41,53 @@ int		ft_connection(char **tet)
 	return (0);
 }
 
-int		ft_issquare(char **tet)
+static void	ft_increment(size_t *i, size_t *j)
 {
-	int		i;
-	int		j;
-	int		count;
-
-	i = 0;
-	count = 0;
-	while (i < 4)
-	{
-		j = 0;
-		while (tet[i][j] != '\0')
-		{
-			if (tet[i][j] == '#')
-			{
-				count += (i > 0 && tet[i - 1][j] == '#') ? 1 : 0;
-				count += (i < 3 && tet[i + 1][j] == '#') ? 1 : 0;
-				count += (j > 0 && tet[i][j - 1] == '#') ? 1 : 0;
-				count += (j < 3 && tet[i][j + 1] == '#') ? 1 : 0;
-			}
-			j++;
-		}
-		i++;
-	}
-	if (count == 8)
-		return (1);
-	return (0);
+	*i = *i + 1;
+	*j = *j + 1;
 }
 
-char	*ft_simplify_tet(char *tet)
+static char	*ft_trim(char *condenced)
 {
-	size_t	i;
-	char	*condenced;
 	size_t	j;
 
-	i = 0;
-	condenced = ft_strdup(tet); 
-	while (*tet)
+	j = ft_strlen(condenced) - 1;
+	while (condenced[j] == '.' || condenced[j] == '\n')
 	{
-		if (*tet == '\n')
-		{
-			condenced[i] = *tet + 1;
-			i++;
-		}
-		if (condenced[i] != '\0')
-			i++;
-		tet++;
+		condenced[j] = '\0';
+		j--;
 	}
-	j = ft_strlen(condenced);
-	while (i < j)
-		condenced[i] = '\0';
 	return (condenced);
 }
 
-int		ft_tet_type(char *tet)
+static char	*ft_simplify_tet(char *tet)
+{
+	size_t	i;
+	size_t	j;
+	char	*condenced;
+
+	i = 0;
+	condenced = ft_strdup(tet);
+	while (condenced[i] == '.' || condenced[i] == '\n')
+		i++;
+	j = i;
+	i = 0;
+	while (tet[j] != '\0')
+	{
+		if (tet[j] == '\n')
+		{
+			condenced[i] = tet[j + 1];
+			i++;
+			j = j + 2;
+		}
+		condenced[i] = tet[j];
+		if (condenced[i] != '\0' && tet[j] != '\0')
+			ft_increment(&i, &j);
+	}
+	return (ft_trim(condenced));
+}
+
+int			ft_tet_type(char *tet)
 {
 	int		i;
 	char	*small;
