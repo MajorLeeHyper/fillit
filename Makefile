@@ -1,6 +1,6 @@
 NAME		= fillit
 LIB			= libfil.a
-FILENAMES	= ft_get_tetro.c ft_checks.c ft_dance.c
+FILENAMES	= ft_get_tetro.c ft_checks.c ft_dance.c ft_table.c
 HEADER		= .
 FLAGS		= -Wall -Wextra -Werror
 TEST		= runtest

@@ -6,35 +6,42 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:30:49 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 18:48:53 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/19 17:56:22 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	**ft_maketable(int size)
-{
-	char	**table;
-	int		i;
+#include "libfil.h"
 
-	table = (char**)malloc(sizeof(char) * size + 1);
-	if (table == 0)
+char	*ft_maketable(int size)
+{
+	char	*tab;
+	int		n;
+
+	tab = (char*)malloc(sizeof(char) * ((size) * size));
+	if (tab == 0)
 		return (NULL);
-	i = 0;
-	while (i < size)
+	ft_memset(tab, '.', ((size + 1) * size) + 1);
+	tab[((size + 1) * size) + 1] = 0;
+	n = 0;
+	while (tab[n] != 0)
 	{
-		table[i] = (char*)malloc(sizeof(char) * size + 1);
-		i++;
+		if (n % (size + 1) == 0)
+			tab[n] = '\n';
+		n++;
 	}
-	return (table);
+	return (tab);
 }
 
 int		ft_find_tab_size(int x)
 {
 	int	i;
+	int	spaces;
 
 	i = 0;
+	spaces = 4 * x;
 	while (i < 46341)
 	{
-		if (i * i >= x)
+		if (i * i >= spaces)
 			return(i);
 		i++;
 	}
