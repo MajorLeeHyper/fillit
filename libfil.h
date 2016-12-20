@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:37:50 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/19 17:39:45 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/19 22:56:06 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void			ft_printdance(t_dance *lst);
 void			ft_makedance(t_dance **start, t_dance **end);
 int				ft_countdance(t_dance *start);
 int				ft_tet_type(char *tet);
-char			*ft_maketable(int size);
-int				ft_find_tab_size(int x);
+char			*ft_maketable(t_dance *lst);
 
 #endif
