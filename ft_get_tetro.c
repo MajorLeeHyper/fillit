@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 19:00:27 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/19 17:05:09 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int		ft_check_valid(char *tet)
 	return (0);
 }
 
-char			*ft_get_tetro(char *arg)
+t_dance			*ft_get_tetro(char *arg)
 {
 	int		fd;
 	char	*buff;
@@ -64,5 +64,5 @@ char			*ft_get_tetro(char *arg)
 		lst = lst->right;
 	}
 	ft_makedance(&start, &lst);
-	return (buff);
+	return (start);
 }

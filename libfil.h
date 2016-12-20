@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:37:50 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/18 19:03:36 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/19 17:05:21 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_dance
 	struct s_dance	*left;
 }				t_dance;
 
-char			*ft_get_tetro(char *arg);
+t_dance			*ft_get_tetro(char *arg);
 int				ft_connection(char **tet);
 t_dance			*ft_newdance(int tet, char let);
 void			ft_newright(t_dance **start, int tet, char let);
