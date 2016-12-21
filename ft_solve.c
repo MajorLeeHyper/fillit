@@ -6,35 +6,35 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 22:57:33 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/20 16:54:39 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/20 17:12:47 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libfil.h"
 
-void	ft_place_tetro(char *tab, int tet)
+int		ft_place_tetro(char *tab, t_dance *tet)
 {
-	int	track;
-	int i;
+	int	offset;
+	int len;
 	int	count;
 
-	track = 1;
+	offset = 0;
+	len = 0;
 	count = 0;
-	i = 0;
-	tet = 0;
-	while (tab[track] != '.')
-		track++;
-	tab[track] = '#';
-	count++;
-	while (count != 4)
+	while (tab[len] != '\n')
+		len++;
+	len++;
+	while (tab[offset] != '.')
+		offset++;
+	while (count < 4)
 	{
-		while (tab[track + i] != '\n')
-			i++;
-		i++;
-		while (tab[track + i])
-		tab[i + track] = '#';
+		if (tab[offset] != '.')
+			return (0);
+		tab[offset] = tet->label;
+		offset = offset + len;
 		count++;
 	}
+	return (1);
 }
 
 /*
