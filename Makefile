@@ -1,6 +1,6 @@
 NAME		= fillit
 LIB			= libfil.a
-FILENAMES	= ft_get_tetro.c ft_checks.c ft_dance.c ft_table.c
+FILENAMES	= ft_get_tetro.c ft_checks.c ft_dance.c ft_table.c ft_solve.c main.c
 HEADER		= .
 FLAGS		= -Wall -Wextra -Werror
 TEST		= runtest
@@ -13,7 +13,7 @@ OBJ			= $(addprefix build/, $(FILENAMES:.c=.o))
 all: $(NAME)
 
 $(NAME): $(LIB)
-	gcc $(FLAGS) main.c -I. -I libft libft/libft.a $(LIB) -o $(NAME)
+	gcc $(FLAGS) -I. -I libft libft/libft.a $(LIB) -o $(NAME)
 
 $(LIB): $(OBJ)
 	ar rc $(LIB) $(OBJ) 

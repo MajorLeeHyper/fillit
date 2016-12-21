@@ -1,37 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_solve.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/09 17:20:02 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/20 16:53:04 by vyudushk         ###   ########.fr       */
+/*   Created: 2016/12/19 22:57:33 by vyudushk          #+#    #+#             */
+/*   Updated: 2016/12/20 16:54:39 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h> //TODO REMOVE
-#include "libft.h"
 #include "libfil.h"
 
-int		main(int argc, char **argv)
+void	ft_place_tetro(char *tab, int tet)
 {
-	t_dance	*lst;
-	char	*tab;
+	int	track;
+	int i;
+	int	count;
 
-	if (argc != 2)
+	track = 1;
+	count = 0;
+	i = 0;
+	tet = 0;
+	while (tab[track] != '.')
+		track++;
+	tab[track] = '#';
+	count++;
+	while (count != 4)
 	{
-		ft_putendl("usage: program requires one file as an argument");
-		return (0);
+		while (tab[track + i] != '\n')
+			i++;
+		i++;
+		while (tab[track + i])
+		tab[i + track] = '#';
+		count++;
 	}
-	lst = ft_get_tetro(argv[1]);
-	ft_printdance(lst);
-	ft_putnbr(ft_countdance(lst));
-	tab = ft_maketable(lst);
-	ft_place_tetro(tab, 1);
-	ft_place_tetro(tab, 1);
-	ft_putstr(tab);
-	return (0);
 }
+
+/*
+char	*ft_solve(t_dance *lst, char *tab)
+{
+}*/
