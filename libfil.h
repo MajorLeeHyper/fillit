@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:37:50 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/20 17:12:36 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/20 22:04:23 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,6 @@ int				ft_countdance(t_dance *start);
 int				ft_tet_type(char *tet);
 char			*ft_maketable(t_dance *lst);
 int				ft_place_tetro(char *tab, t_dance *tet);
+int				ft_place_square(char *tab, t_dance *tet);
 
 #endif
