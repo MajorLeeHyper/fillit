@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 22:57:33 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/21 18:07:55 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 15:56:51 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,14 +196,20 @@ int		ft_place_12_13(char *tab, t_dance *tet)
 		len++;
 		while (tab[offset] != '.')
 			offset++;
+		if (tet->tet == 12)
+			offset++;
 		while (count < 4)
 		{
 			if (tab[offset] != '.')
 				return (0);
 			tab[offset] = tet->label;
-			if (count == 0 || count == 2)
+			if ((count == 0 || count == 2) && tet->tet == 12)
 				offset = offset + 1;
-			else
+			else if (tet->tet == 12)
+				offset = offset  - 2 + len;
+			else if ((count == 0 || count == 2) && tet->tet == 13)
+				offset = offset + 1;
+			else if (tet->tet == 13)
 				offset = offset + len;
 			count++;
 		}
