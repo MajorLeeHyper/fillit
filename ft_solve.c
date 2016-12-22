@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 22:57:33 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/21 17:20:21 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/21 18:07:55 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,34 @@ int		ft_place_7_11(char *tab, t_dance *tet)
 	return (1);
 }
 
+int		ft_place_12_13(char *tab, t_dance *tet)
+{
+	int	offset;
+		int	len;
+		int	count;
+
+		offset = 0;
+		len = 0;
+		count = 0;
+		while (tab[len] != '\n')
+			len++;
+		len++;
+		while (tab[offset] != '.')
+			offset++;
+		while (count < 4)
+		{
+			if (tab[offset] != '.')
+				return (0);
+			tab[offset] = tet->label;
+			if (count == 0 || count == 2)
+				offset = offset + 1;
+			else
+				offset = offset + len;
+			count++;
+		}
+		return (1);
+}
+
 int		ft_place_tetro(char *tab, t_dance *tet)
 {
 	if (tet->tet == 1)
@@ -196,6 +224,8 @@ int		ft_place_tetro(char *tab, t_dance *tet)
 		return (ft_place_6_10(tab, tet));
 	if (tet->tet == 7 || tet->tet == 11)
 		return (ft_place_7_11(tab, tet));
+	if (tet->tet == 12 || tet->tet == 13)
+		return (ft_place_12_13(tab, tet));
 	if (tet->tet == 9 || tet->tet == 8 || tet->tet == 19)
 		return (ft_place_9_8_19(tab, tet));
 	return (0);
