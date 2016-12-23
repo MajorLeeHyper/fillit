@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 17:20:02 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/23 13:28:51 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/23 13:40:38 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include <fcntl.h>
 #include "libft.h"
 #include "libfil.h"
+
+static int	ft_checkfull(char *tab)
+{
+	while (*tab)
+	{
+		if (*tab == '.')
+			return (0);
+		tab++;
+	}
+	return (1);
+}
 
 int		main(int argc, char **argv)
 {
@@ -31,7 +42,7 @@ int		main(int argc, char **argv)
 	tab = ft_maketable(lst, size);
 	while (ft_countdance(lst))
 	{
-		if (tab[ft_strlen(tab) - 2] != '.' && ft_countdance(lst) >= 1)
+		if (ft_checkfull(tab) && ft_countdance(lst) >= 1)
 		{
 			size++;
 			lst = ft_get_tetro(argv[1]);
