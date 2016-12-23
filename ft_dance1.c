@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:28:19 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 19:17:35 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 21:29:36 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,11 @@ t_dance		*ft_remove(t_dance *x)
 	x->left->right = x->right;
 	x->right->left = x->left;
 	return (x->right);
+}
+
+t_dance		*ft_replace(t_dance *x)
+{
+	x->left->right = x;
+	x->right->left = x;
+	return (x);
 }
