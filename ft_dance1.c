@@ -6,13 +6,15 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 17:28:19 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 17:30:27 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 18:38:04 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libfil.h"
 
 t_dance		*ft_remove(t_dance *x)
 {
 	x->left->right = x->right;
 	x->right->left = x->left;
-	return (x);
+	return (x->right);
 }

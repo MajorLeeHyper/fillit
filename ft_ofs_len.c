@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:42:33 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 17:07:47 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/22 18:56:04 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@ void	ft_ofs_len(int *ofs, int *len, char *tab)
 {
 	*ofs = 0;
 	*len = 0;
-
 	while (tab[*len] != '\n')
 		*len = *len + 1;
 	*len = *len + 1;
