@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 22:57:33 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 16:21:59 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 16:40:59 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,6 +270,8 @@ int		ft_place_tetro(char *tab, t_dance *tet)
 		return (ft_place_12_13(tab, tet));
 	if (tet->tet == 9 || tet->tet == 8 || tet->tet == 19)
 		return (ft_place_9_8_19(tab, tet));
+	if (tet->tet == 14 || tet->tet == 15)
+		return (ft_place_14_15(tab, tet));
 	if (tet->tet == 17 || tet->tet == 18)
 		return (ft_place_17_18(tab, tet));
 	return (0);
