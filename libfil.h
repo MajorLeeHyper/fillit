@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:37:50 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 17:30:23 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 19:19:24 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int				ft_place_17_18(char *tab, t_dance *tet);
 
 void			ft_ofs_len(int *ofs, int *len, char *tab);
 t_dance			*ft_remove(t_dance *x);
+void			ft_convert_tab(char *tab, char w_let, char new);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:30:49 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/20 17:06:58 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 19:18:46 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,14 @@ char		*ft_maketable(t_dance *lst)
 	}
 	tab++;
 	return (tab);
+}
+
+void		ft_convert_tab(char *tab, char w_let, char new)
+{
+	while (*tab)
+	{
+		if (*tab == w_let)
+			*tab = new;
+		tab++;
+	}
 }
