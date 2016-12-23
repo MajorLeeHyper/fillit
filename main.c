@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 17:20:02 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 21:28:08 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/22 21:49:13 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int		main(int argc, char **argv)
 		{
 			lst = ft_remove(lst);
 			ft_convert_tab(tab, '0', '.');
-			ft_putendl(tab);
+			ft_putendl(tab); /*remember to remove before submit*/
 		}
 		else
 		{
 			ft_convert_one(tab, lst->label, '0');
-			ft_putendl(tab);
+			ft_putendl(tab);/*remember to remove before submit*/
 		}
 	}
 	ft_putstr(tab);
