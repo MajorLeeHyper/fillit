@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/23 14:04:46 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/23 14:15:56 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static int		ft_check_valid(char *tet)
 {
 	int	n;
 	int	count;
-
+	
+	if (ft_strlen(tet) != 21)
+		return (6);
 	if (tet[4] != '\n' || tet[9] != '\n' || tet[14] != '\n' || tet[19] != '\n')
 		return (1);
 	if (tet[20] != '\n' && tet[20] != 0)
