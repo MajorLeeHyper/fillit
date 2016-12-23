@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/19 22:57:33 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 15:56:51 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 16:19:06 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ int		ft_place_7_11(char *tab, t_dance *tet)
 
 int		ft_place_12_13(char *tab, t_dance *tet)
 {
-	int	offset;
+		int	offset;
 		int	len;
 		int	count;
 
@@ -216,6 +216,38 @@ int		ft_place_12_13(char *tab, t_dance *tet)
 		return (1);
 }
 
+int		ft_place_17_18(char *tab, t_dance *tet)
+{
+	int ofs;
+	int len;
+	int count;
+
+	ofs = 0;
+	len = 0;
+	count = 0;
+	while (tab[len] != '\n')
+		len++;
+	len++;
+	while (tab[ofs] != '.')
+		ofs++;
+	if (tet->tet == 17)
+		ofs++;
+	while (count < 3)
+	{
+		if (tab[ofs] != '.')
+			return (0);
+		tab[ofs] = tet->label;
+		ofs = ofs + len;
+		count++;
+	}
+	ofs = ofs - len * 2;
+	if (tet->tet == 18 && tab[ofs + 1] == '.')
+		tab[ofs + 1] = tet->label;
+	else if (tet->tet == 17 && tab[ofs - 1] == '.')
+		tab[ofs - 1] = tet->label;
+	return (1);
+}
+
 int		ft_place_tetro(char *tab, t_dance *tet)
 {
 	if (tet->tet == 1)
@@ -234,10 +266,7 @@ int		ft_place_tetro(char *tab, t_dance *tet)
 		return (ft_place_12_13(tab, tet));
 	if (tet->tet == 9 || tet->tet == 8 || tet->tet == 19)
 		return (ft_place_9_8_19(tab, tet));
+	if (tet->tet == 17 || tet->tet == 18)
+		return (ft_place_17_18(tab, tet));
 	return (0);
 }
-
-/*
-char	*ft_solve(t_dance *lst, char *tab)
-{
-}*/
