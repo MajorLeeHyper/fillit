@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/23 14:31:18 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/23 14:34:21 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ static int		ft_check_valid(char *tet)
 	int	n;
 	int	count;
 	
-	ft_putendl("this is the strlen:");
-	ft_putnbr(ft_strlen(tet));
-	ft_putchar('\n');	
 	if (ft_strlen(tet) != 21)
 		if (ft_strlen(tet) != 20)
 			return (6);
