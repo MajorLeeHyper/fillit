@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:54:22 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/22 17:17:08 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/22 17:21:55 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ int		ft_place_12_13(char *tab, t_dance *tet)
 	int	len;
 	int	count;
 
-	offset = 0;
-	len = 0;
 	count = 0;
 	ft_ofs_len(&offset, &len, tab);
 	if (tet->tet == 12)
@@ -133,8 +131,6 @@ int		ft_place_17_18(char *tab, t_dance *tet)
 	int len;
 	int count;
 
-	ofs = 0;
-	len = 0;
 	count = 0;
 	ft_ofs_len(&ofs, &len, tab);
 	if (tet->tet == 17)
@@ -150,11 +146,10 @@ int		ft_place_17_18(char *tab, t_dance *tet)
 	ofs = ofs - len * 2;
 	if (tet->tet == 18 && tab[ofs + 1] == '.')
 		tab[ofs + 1] = tet->label;
-	else if (tet->tet == 18 && tab[ofs + 1] != '.')
-		return (0);
-	if (tet->tet == 17 && tab[ofs - 1] == '.')
+	else if (tet->tet == 17 && tab[ofs - 1] == '.')
 		tab[ofs - 1] = tet->label;
-	else if (tet->tet == 17 && tab[ofs - 1] != '.')
+	else if ((tet->tet == 18 && tab[ofs + 1] != '.') ||
+			(tet->tet == 17 && tab[ofs - 1] != '.'))
 		return (0);
 	return (1);
 }
