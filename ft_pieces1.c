@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:54:22 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/22 17:10:55 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/22 17:17:08 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		ft_place_4_5_16(char *tab, t_dance *tet)
 			return (0);
 		tab[offset + len] = tet->label;
 		tab[offset + len + 1] = tet->label;
-	   	tab[offset + len + 2] = tet->label;
+		tab[offset + len + 2] = tet->label;
 		count += 3;
 	}
 	return (1);
@@ -99,32 +99,32 @@ int		ft_place_7_11(char *tab, t_dance *tet)
 
 int		ft_place_12_13(char *tab, t_dance *tet)
 {
-		int	offset;
-		int	len;
-		int	count;
+	int	offset;
+	int	len;
+	int	count;
 
-		offset = 0;
-		len = 0;
-		count = 0;
-		ft_ofs_len(&offset, &len, tab);
-		if (tet->tet == 12)
-			offset++;
-		while (count < 4)
-		{
-			if (tab[offset] != '.')
-				return (0);
-			tab[offset] = tet->label;
-			if ((count == 0 || count == 2) && tet->tet == 12)
-				offset = offset + 1;
-			else if (tet->tet == 12)
-				offset = offset  - 2 + len;
-			else if ((count == 0 || count == 2) && tet->tet == 13)
-				offset = offset + 1;
-			else if (tet->tet == 13)
-				offset = offset + len;
-			count++;
-		}
-		return (1);
+	offset = 0;
+	len = 0;
+	count = 0;
+	ft_ofs_len(&offset, &len, tab);
+	if (tet->tet == 12)
+		offset++;
+	while (count < 4)
+	{
+		if (tab[offset] != '.')
+			return (0);
+		tab[offset] = tet->label;
+		if ((count == 0 || count == 2) && tet->tet == 12)
+			offset = offset + 1;
+		else if (tet->tet == 12)
+			offset = offset - 2 + len;
+		else if ((count == 0 || count == 2) && tet->tet == 13)
+			offset = offset + 1;
+		else if (tet->tet == 13)
+			offset = offset + len;
+		count++;
+	}
+	return (1);
 }
 
 int		ft_place_17_18(char *tab, t_dance *tet)
