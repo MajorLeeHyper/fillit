@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 17:20:02 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 19:22:11 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 20:16:51 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		main(int argc, char **argv)
 	}
 	lst = ft_get_tetro(argv[1]);
 	tab = ft_maketable(lst);
-	while (lst)
+	while (ft_countdance(lst))
 	{
 		if (ft_place_tetro(tab, lst) == 1)
 		{
