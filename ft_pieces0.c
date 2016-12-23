@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/20 17:43:22 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/22 20:54:19 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 21:43:57 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ int		ft_place_14_15(char *tab, t_dance *tet)
 	len = 0;
 	count = 0;
 	ft_ofs_len(&offset, &len, tab);
-	if (tet->tet == 15)
-		offset++;
 	while (count < 4)
 	{
 		if (tab[offset] != '.')
@@ -107,25 +105,22 @@ int		ft_place_8_9_19(char *tab, t_dance *tet)
 	int	offset;
 	int count;
 
-	len = 0;
-	offset = 0;
 	count = 0;
+	if (tet->tet == 19)
+		return (ft_place_19(tab, tet));
 	ft_ofs_len(&offset, &len, tab);
-	if (tet->tet == 8 || tet->tet == 9 || tet->tet == 19)
+	while (count < 4)
 	{
-		if (tab[offset] != '.' || tab[offset + 1] != '.' ||
-				tab[offset + 2] != '.')
+		if (tab[offset] != '.')
 			return (0);
 		tab[offset] = tet->label;
-		tab[offset + 1] = tet->label;
-		tab[offset + 2] = tet->label;
-		count += 3;
+		if (count == 2 && tet->tet == 8)
+			offset += len;
+		else if (count == 2 && tet->tet == 9)
+			offset += len - 2;
+		else
+			offset++;
+		count++;
 	}
-	if (tet->tet == 9 && tab[offset + len] == '.')
-		tab[offset + len] = tet->label;
-	if (tet->tet == 19 && tab[offset + len + 1] == '.')
-		tab[offset + len + 1] = tet->label;
-	if (tet->tet == 8 && tab[offset + len + 2] == '.')
-		tab[offset + len + 2] = tet->label;
 	return (1);
 }

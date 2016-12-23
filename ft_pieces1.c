@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:54:22 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/22 20:26:35 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/22 21:26:29 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,22 @@ int		ft_place_4_5_16(char *tab, t_dance *tet)
 	int	offset;
 	int count;
 
-	len = 0;
-	offset = 0;
+	if (tet->tet == 5)
+		return (ft_place_5(tab, tet));
+	if (tet->tet == 16)
+		return (ft_place_16(tab, tet));
 	count = 0;
 	ft_ofs_len(&offset, &len, tab);
-	if (tet->tet == 4 && tab[offset] == '.')
-		tab[offset] = tet->label;
-	if (tet->tet == 16 && tab[offset + 1] == '.')
-		tab[offset + 1] = tet->label;
-	if (tet->tet == 5 && tab[offset + 2] == '.')
-		tab[offset + 2] = tet->label;
-	if (tet->tet == 4 || tet->tet == 5 || tet->tet == 16)
+	while (count < 4)
 	{
-		if (tab[offset + len] != '.' || tab[offset + len + 1] != '.' ||
-				tab[offset + len + 2] != '.')
+		if (tab[offset] != '.')
 			return (0);
-		tab[offset + len] = tet->label;
-		tab[offset + len + 1] = tet->label;
-		tab[offset + len + 2] = tet->label;
-		count += 3;
+		tab[offset] = tet->label;
+		if (count == 0)
+			offset += len;
+		else
+			offset++;
+		count++;
 	}
 	return (1);
 }
@@ -47,8 +44,6 @@ int		ft_place_6_10(char *tab, t_dance *tet)
 	int	offset;
 	int	count;
 
-	len = 0;
-	offset = 0;
 	count = 0;
 	ft_ofs_len(&offset, &len, tab);
 	while (count < 3)
