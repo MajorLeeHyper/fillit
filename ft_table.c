@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:30:49 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 19:18:46 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 20:52:34 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static int	ft_find_tab_size(int x)
 	return (0);
 }
 
-char		*ft_maketable(t_dance *lst)
+char		*ft_maketable(t_dance *lst, int add_size)
 {
 	char	*tab;
 	int		size;
 	int		n;
 
-	size = ft_find_tab_size(ft_countdance(lst));
+	size = ft_find_tab_size(ft_countdance(lst) + add_size);
 	tab = (char*)malloc(sizeof(char) * ((size) * size));
 	if (tab == 0)
 		return (NULL);
@@ -57,6 +57,24 @@ void		ft_convert_tab(char *tab, char w_let, char new)
 	{
 		if (*tab == w_let)
 			*tab = new;
+		tab++;
+	}
+}
+
+void		ft_convert_one(char *tab, char w_let, char new)
+{
+	int	found;
+
+	found = 0;
+	while (*tab)
+	{
+		if (*tab == w_let && found == 0)
+		{
+			*tab = new;
+			found = 1;
+		}
+		if (*tab == w_let)
+			*tab = '.';
 		tab++;
 	}
 }

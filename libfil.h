@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:37:50 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 19:19:24 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 20:52:12 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			ft_printdance(t_dance *lst);
 void			ft_makedance(t_dance **start, t_dance **end);
 int				ft_countdance(t_dance *start);
 int				ft_tet_type(char *tet);
-char			*ft_maketable(t_dance *lst);
+char			*ft_maketable(t_dance *lst, int add_size);
 int				ft_place_tetro(char *tab, t_dance *tet);
 
 int				ft_place_1(char *tab, t_dance *tet);
@@ -53,5 +53,6 @@ int				ft_place_17_18(char *tab, t_dance *tet);
 void			ft_ofs_len(int *ofs, int *len, char *tab);
 t_dance			*ft_remove(t_dance *x);
 void			ft_convert_tab(char *tab, char w_let, char new);
+void			ft_convert_one(char *tab, char w_let, char new);
 
 #endif
