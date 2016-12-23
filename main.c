@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 17:20:02 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 19:19:51 by vyudushk         ###   ########.fr       */
+/*   Updated: 2016/12/22 19:22:11 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		main(int argc, char **argv)
 		else
 			ft_convert_tab(tab, lst->label, '0');
 	}
-	//ft_place_tetro(tab, lst);
 	ft_putstr(tab);
 	return (0);
 }
