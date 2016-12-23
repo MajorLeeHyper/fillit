@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 17:20:02 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 21:49:13 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/22 21:51:04 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(int argc, char **argv)
 	tab = ft_maketable(lst, size);
 	while (ft_countdance(lst))
 	{
-		if (tab[ft_strlen(tab) - 1] != '.' && ft_countdance(lst) < 1)
+		if (tab[ft_strlen(tab) - 1] != '.' && ft_countdance(lst) > 1)
 		{
 			size++;
 			tab = ft_maketable(lst, size);
