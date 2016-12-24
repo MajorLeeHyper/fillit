@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 21:02:46 by dnelson           #+#    #+#             */
-/*   Updated: 2016/12/22 21:44:44 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/23 17:24:36 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_place_16(char *tab, t_dance *tet)
 	len++;
 	while (tab[ofs] != '.')
 		ofs++;
-	while (count > 4)
+	while (count < 4)
 	{
 		if (tab[ofs] != '.')
 			return (0);
