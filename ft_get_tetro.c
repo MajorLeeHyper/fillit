@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/23 14:34:21 by dnelson          ###   ########.fr       */
+/*   Updated: 2016/12/23 17:47:12 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int		ft_check_valid(char *tet)
 	int	n;
 	int	count;
 	
-	if (ft_strlen(tet) != 21)
-		if (ft_strlen(tet) != 20)
-			return (6);
+//	if (ft_strlen(tet) != 21)
+//		if (ft_strlen(tet) != 20)
+	//		return (6);
 	if (tet[4] != '\n' || tet[9] != '\n' || tet[14] != '\n' || tet[19] != '\n')
 		return (1);
 	if (tet[20] != '\n' && tet[20] != 0)
@@ -59,6 +59,7 @@ t_dance			*ft_get_tetro(char *arg)
 	let = 'A';
 	lst = ft_newdance(ft_tet_type(buff), let);
 	start = lst;
+	ft_bzero(buff, 22);
 	while (read(fd, buff, 21))
 	{
 		let++;
