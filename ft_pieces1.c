@@ -6,7 +6,7 @@
 /*   By: dnelson <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/22 16:54:22 by dnelson           #+#    #+#             */
-/*   Updated: 2017/01/11 13:24:39 by dnelson          ###   ########.fr       */
+/*   Updated: 2017/01/11 13:41:13 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,14 +74,9 @@ int		ft_place_7_11(char *tab, t_dance *tet)
 	ft_ofs_len(&ofs, &len, tab);
 	if (tet->tet == 11 && tab[ofs] == '.')
 	{
-		tab[ofs] = tet->label;
-		ofs++;
+		tab[ofs++] = tet->label;
 		count++;
 	}
-//	else if (tet->tet == 7 && tab[ofs + (len * 2)] == '.')
-//		tab[ofs + (len * 2) - 1] = tet->label;
-//	else if (tab[ofs] != '.')
-//		return (0);
 	while (count < 4)
 	{
 		if (tab[ofs] != '.')

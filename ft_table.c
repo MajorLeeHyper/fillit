@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:30:49 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/01/11 13:02:36 by dnelson          ###   ########.fr       */
+/*   Updated: 2017/01/11 13:44:15 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void		ft_convert_one(char *tab, char w_let, char new)
 	}
 }
 
-void	ft_convert_two(char *tab, char w_let, char new)
+void		ft_convert_two(char *tab, char w_let, char new)
 {
 	int	found;
 
