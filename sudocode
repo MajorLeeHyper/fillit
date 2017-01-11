@@ -1,5 +1,0 @@
-if count is < 4 and space above, below, right, or left is #, piece is still valid
-when count == 4, verify that number of connections between the 4 spots is exactly 6 or exactly 8, (square is 8, all others have 6: ex: straight line piece is [1][2][2][1] )
-^ just verify number of connections >= 6 (7 will not exist, 8 is only possible with perfect square)
-
-absolute minimum a square would be is the total number of hashes in the input tetriminos
