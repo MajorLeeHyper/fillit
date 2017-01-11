@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 11:52:22 by vyudushk          #+#    #+#             */
-/*   Updated: 2017/01/11 13:37:44 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/01/11 14:26:46 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,50 @@ static int		ft_check_valid(char *tet)
 	return (0);
 }
 
-t_dance			*ft_get_tetro(char *arg)
+static char		*set_up_buff(char *arg, int *fd, char *let)
 {
-	int		fd;
-	char	*buff;
-	t_dance *lst;
-	t_dance *start;
-	char	let;
-	int		flag;
+	char *buff;
 
 	buff = ft_strnew(22);
 	if (buff == 0)
 		return (0);
-	fd = open(arg, O_RDONLY);
-	read(fd, buff, 21);
+	*fd = open(arg, O_RDONLY);
+	read(*fd, buff, 21);
 	if (ft_check_valid(buff) != 0)
 		return (0);
-	let = 'A';
-	lst = ft_newdance(ft_tet_type(buff), let);
-	start = lst;
-	flag = 0;
+	*let = 'A';
+	return (buff);
+}
+
+static t_dance	*set_up_dance(char *buff, char *let, int *flag)
+{
+	t_dance *lst;
+
+	lst = ft_newdance(ft_tet_type(buff), *let);
+	*flag = 0;
 	if (buff[20] == '\0')
-		flag = 1;
+		*flag = 1;
 	ft_bzero(buff, 22);
-	while (read(fd, buff, 21) && let < 'Z')
+	return (lst);
+}
+
+t_dance			*ft_get_tetro(char *arg)
+{
+	int		fd_and_flag[2];
+	char	*buff;
+	t_dance *lst;
+	t_dance *start;
+	char	let;
+
+	buff = set_up_buff(arg, &fd_and_flag[0], &let);
+	if (buff == 0)
+		return (0);
+	lst = set_up_dance(buff, &let, &fd_and_flag[1]);
+	start = lst;
+	while (read(fd_and_flag[0], buff, 21) && let++ < 'Z')
 	{
 		if (buff[20] == '\0')
-			flag = 1;
-		let++;
+			fd_and_flag[1] = 1;
 		if (ft_check_valid(buff) != 0)
 			return (0);
 		ft_newright(&lst, ft_tet_type(buff), let);
@@ -73,7 +89,7 @@ t_dance			*ft_get_tetro(char *arg)
 		lst = lst->right;
 	}
 	ft_makedance(&start, &lst);
-	if (flag == 1)
+	if (fd_and_flag[1] == 1)
 		return (start);
 	return (0);
 }
