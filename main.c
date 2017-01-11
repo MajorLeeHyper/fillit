@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/09 17:20:02 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/23 13:59:52 by vyudushk         ###   ########.fr       */
+/*   Updated: 2017/01/11 12:10:41 by vyudushk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		main(int argc, char **argv)
 	t_dance	*lst;
 	char	*tab;
 	int		size;
+	int		tetros;
 
 	if (argc != 2)
 	{
@@ -45,9 +46,10 @@ int		main(int argc, char **argv)
 		return (1);
 	}
 	tab = ft_maketable(lst, size);
-	while (ft_countdance(lst))
+	tetros = ft_countdance(lst);
+	while (tetros)
 	{
-		if (ft_checkfull(tab) && ft_countdance(lst) >= 1)
+		if (ft_checkfull(tab) && ft_countdance(lst) == tetros)
 		{
 			size++;
 			lst = ft_get_tetro(argv[1]);
@@ -55,7 +57,9 @@ int		main(int argc, char **argv)
 		}
 		if (ft_place_tetro(tab, lst) == 1)
 		{
-			lst = ft_remove(lst);
+			//lst = ft_remove(lst);
+			//lst = lst->right;
+			tetros--;
 			ft_convert_tab(tab, '0', '.');
 			ft_putendl(tab); /*remember to remove before submit*/
 		}
