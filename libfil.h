@@ -6,7 +6,7 @@
 /*   By: vyudushk <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/06 14:37:50 by vyudushk          #+#    #+#             */
-/*   Updated: 2016/12/22 21:44:32 by dnelson          ###   ########.fr       */
+/*   Updated: 2017/01/11 12:48:01 by dnelson          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void			ft_ofs_len(int *ofs, int *len, char *tab);
 t_dance			*ft_remove(t_dance *x);
 void			ft_convert_tab(char *tab, char w_let, char new);
 void			ft_convert_one(char *tab, char w_let, char new);
+void			ft_convert_two(char *tab, char w_let, char new);
 
 #endif
